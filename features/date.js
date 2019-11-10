@@ -2114,7 +2114,6 @@ let arr = [
   ]
 
   event = []
-  
 
   for(let i = 0; i < arr.length; i++ ){
     let subArr = {}
@@ -2159,13 +2158,26 @@ let arr = [
   break;
 }
 
-    var d = new Date(subY , subMon,  parseInt(sub))
-    subArr.start = d; 
-    subArr.title = " Course: " + item.UnnamedField6 
-    sub2.start = d
-    sub2.title = " Instructor: " + item.UnnamedField7
-    event.push(sub2)
+  let space = {}
+
+    var d = new Date(subY , subMon,  parseInt(sub)) 
+   
+    space.start = new Date(subY , subMon,  parseInt(sub), 1);
+    space.title = '\n'
+    space.color = "white;"    
+
+    sub2.start = d;
+    sub2.title = " Set A: " + "\n" + "Course: " + item.UnnamedField1 + "\n" +" Instructor: " + item.UnnamedField2
+    sub2.color = "blue;"
+
+    subArr.start = new Date(subY , subMon,  parseInt(sub), 1);
+    subArr.title = " Set B: " + "\n" + "Course: " + item.UnnamedField6 + "\n" +" Instructor: " + item.UnnamedField7
+    subArr.color = "red;"
+
+    event.push(space)
     event.push(subArr)
+    event.push(sub2)
+
   }
   
          document.addEventListener('DOMContentLoaded', function() {
@@ -2180,9 +2192,7 @@ let arr = [
     },
     displayEventTime: false,
     eventSources: [{
-    events: event,
-    color: 'blue',     
-    textColor: 'white' 
+    events: event
           }]
             });
           calendar.render();
