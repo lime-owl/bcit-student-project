@@ -2162,6 +2162,12 @@ let arr = [
 
     var d = new Date(subY , subMon,  parseInt(sub)) 
    
+if(item.UnnamedField7 === ""){
+  sub2.start = d;
+    sub2.title = "" +  item.UnnamedField6 +  ": No Classes" + "\n" + "\n" + "\n" + "\n" 
+    sub2.color = "green;"
+    event.push(sub2)
+} else{
     space.start = new Date(subY , subMon,  parseInt(sub), 1);
     space.title = '\n'
     space.color = "white;"    
@@ -2177,7 +2183,7 @@ let arr = [
     event.push(space)
     event.push(subArr)
     event.push(sub2)
-
+    }
   }
   
          document.addEventListener('DOMContentLoaded', function() {
